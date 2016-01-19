@@ -2,7 +2,7 @@
  * Знайти добуток n значного числа.
  */
 
-public class taskOne {
+public class nValueMultiplication{
 
     public static void main(String[] args) {
 

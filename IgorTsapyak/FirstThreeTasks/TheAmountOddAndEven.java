@@ -1,5 +1,5 @@
 
-public class taskTwo {
+public class TheAmountOddAndEven{
 
     public static void main(String[] args) {
 
@@ -19,7 +19,7 @@ public class taskTwo {
 
         }while (var!=0);
 
-        System.out.println("the Amount of even numbers = " + outVar1);
+        System.out.println("The Amount of even numbers = " + outVar1);
         System.out.println("The Amount of odd numbers = " + outVar2);
 
     }
