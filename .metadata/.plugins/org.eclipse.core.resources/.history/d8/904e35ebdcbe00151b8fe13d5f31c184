@@ -1,0 +1,24 @@
+
+import java.util.Arrays;
+
+public class Testsomearray {
+
+	public static void main (String[] args){
+		int[] a = new int[]{-330, 2, 4, -7, -9};
+		int[] k = new int[]{0};
+	
+	
+		for (int i = 0; i<5; i++){
+			if (a[i]<0 && a[i]<k[0]){
+				
+				k[0] = a[i];
+				
+				}
+				
+			}
+		
+		
+		System.out.println(Arrays.toString(k));
+	}
+	
+}

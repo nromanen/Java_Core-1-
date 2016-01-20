@@ -1,0 +1,22 @@
+
+public class SomeJavaArray {
+
+	public static void main(String[] args) {
+		
+		int [] onearray = new int [10];
+		int A = 0;
+		int S = 0;
+			for (int count=0; count < onearray.length; count++) {onearray[count] = (int)(Math.random()*1000-500);}
+			
+		System.out.println("Вихідний масив");
+		
+			for (int count=0; count < onearray.length; count++) {
+		System.out.println("onearray [" + count + "] =" + onearray[count]);
+		}
+			for (int count=0; count < onearray.length; count++) {
+			if (onearray[count] < 0) {A = A*onearray[count];} 
+			System.out.println("Добуток від'ємних значень = " + A);
+			}
+	}
+
+}

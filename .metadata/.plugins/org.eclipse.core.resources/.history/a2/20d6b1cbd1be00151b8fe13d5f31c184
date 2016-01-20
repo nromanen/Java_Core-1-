@@ -1,0 +1,18 @@
+
+public class SomeJavaArray {
+
+	public static void main(String[] args) {
+		
+		int [] onearray = new int [10];
+		int A = 0;
+		int S = 0;
+			for (int count=0; count < onearray.length; count++) {onearray[count] = (int)(Math.random()*1000-500);}
+			
+		System.out.println("Вихідний масив");
+		
+			for (int count=0; count < onearray.length; count++) {
+		System.out.println("a [" + count + "] =" + onearray[count]);
+			}
+	}
+
+}
