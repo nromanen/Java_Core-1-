@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class AcademyGroup {
 	private String title;
-	private Set<Student> students = new HashSet<>(); // why set
+	private Set<Student> students = new HashSet<>();
 
 	public Set<Student> getStudents() {
 		return students;
@@ -30,16 +30,17 @@ public class AcademyGroup {
 
 	public List<Student> sortedByBirthDate() {
 		List<Student> listStudents = new ArrayList<>(students);
-
-		Collections.sort(listStudents);
-
+		Collections.sort(listStudents, new Comparator<Student>() {
+			@Override
+			public int compare(Student st1, Student st2) {
+				return st2.getBirthDate().compareTo(st1.getBirthDate());}});
 		return listStudents;
 	}
 
 	public List<Student> sortedByAge() {
 		List<Student> listStudents = new ArrayList<>(students);
 		 Collections.sort(listStudents, new Comparator<Student>(){
-			 @Override public int compare(Student st1, Student st2){return st1.getAge() - st2.getAge();}});
+			 @Override public int compare(Student st1, Student st2){return st2.getAge() - st1.getAge();}});
 			return listStudents;
 	}
 
@@ -49,11 +50,10 @@ public class AcademyGroup {
 		Collections.sort(listStudents, new Comparator<Student>() {
 			@Override
 			public int compare(Student oneStudent, Student otherStudent) {
-				return oneStudent.getFirstName().compareTo(
-						otherStudent.getFirstName());
+				return oneStudent.getLastName().compareTo(
+						otherStudent.getLastName());
 			}
 		});
-
 		return listStudents;
 	}
 
@@ -75,4 +75,12 @@ public class AcademyGroup {
 		return students.add(student);
 	}
 
+	public List<Student> gyStudents(int gYear){
+		List<Student> studentHoGinY = new ArrayList<>();
+		for (Student student: students){
+			if (student.getGraduationYear()==gYear){
+			studentHoGinY.add(student);
+			}
+		}return studentHoGinY;
+	}
 }
