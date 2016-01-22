@@ -35,9 +35,7 @@ public class Student implements Comparable<Student> {
     }
 
     public String getFullName() {
-
             fullName = firstName + " " + lastName;
-
         return  fullName;
     }
 
@@ -60,10 +58,11 @@ public class Student implements Comparable<Student> {
 
     @Override
     public int hashCode() {
+        String name = this.getFullName();
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((firstName == null) ? 0 : firstName.hashCode());
+                + ((getFullName() == null) ? 0 : firstName.hashCode());
         return result;
     }
 

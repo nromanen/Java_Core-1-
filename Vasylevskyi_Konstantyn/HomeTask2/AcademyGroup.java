@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public class AcademyGroup {
@@ -49,26 +48,25 @@ public class AcademyGroup {
 
         return listStudents;
     }
-  /*  public List<Student> sortedByGraduationDate(){
-        List<Student> listStudents = new ArrayList<>(students);
-        Collections.sort(listStudents, new Comparator<Student>() {
-            @Override
-            public int compare(Student st1, Student st2) {
-                return st1.getGraduationYear().compareTo(st2.getGraduationYear());
-            }
-        });
-        return listStudents;
-    }*/
+    /*  public List<Student> sortedByGraduationDate(){
+          List<Student> listStudents = new ArrayList<>(students);
+          Collections.sort(listStudents, new Comparator<Student>() {
+              @Override
+              public int compare(Student st1, Student st2) {
+                  return st1.getGraduationYear().compareTo(st2.getGraduationYear());
+              }
+          });
+          return listStudents;
+      }*/
     public List<Student> getStudentByGraduationYear(int year){
-        List<Student> listStudents = new ArrayList<>(students);
         List<Student> list = new ArrayList<>();
-        for (Student listStudent : listStudents) {
+        for (Student listStudent : students) {
             if (listStudent.getGraduationYear().get(Calendar.YEAR) == year) {
-               list.add(listStudent);
+                list.add(listStudent);
             }
         }
         return list;
-        }
+    }
 
 
     public boolean delete(Student student) {
