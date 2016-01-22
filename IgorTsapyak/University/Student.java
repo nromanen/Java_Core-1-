@@ -1,23 +1,29 @@
 package university;
 
 import org.joda.time.DateTime;
+import org.joda.time.Years;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.omg.CORBA.portable.Streamable;
 
-public class Student implements Comparable<Student> {
+public class Student {
     private String firstName;
 
     private String lastName;
 
     private DateTime birthDate;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    private int graduationYear;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setGraduationYear(DateTime graduationYear) {
-        this.graduationYear = graduationYear;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getLastName() {
@@ -25,34 +31,40 @@ public class Student implements Comparable<Student> {
         return lastName;
     }
 
-    public DateTime getGraduationYear() {
-        return graduationYear;
-    }
-
-    private DateTime graduationYear;
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setBirthDate(DateTime birthDate) {
+        this.birthDate = birthDate;
     }
 
     public DateTime getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(DateTime birthDate) {
-        this.birthDate = birthDate;
+    public void setGraduationYear(int graduationYear) {
+        this.graduationYear = graduationYear;
+    }
+
+    public int getGraduationYear() {
+        return graduationYear;
+    }
+
+    public String toString() {
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy MM dd");
+        return lastName + " " + firstName + " (" + birthDate.toString(fmt) + ")";
+
+    }
+
+    public int getAge() {
+        DateTime date = new DateTime();
+        return Years.yearsBetween(birthDate, date).getYears();
     }
 
     @Override
     public int hashCode() {
+        String fullName = firstName+lastName;
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((firstName == null) ? 0 : firstName.hashCode());
+                + ((fullName == null) ? 0 : fullName.hashCode());
         return result;
     }
 
@@ -65,23 +77,6 @@ public class Student implements Comparable<Student> {
         String otherFullName = other.firstName + other.lastName;
         return fullName.equals(otherFullName);
     }
-
-    public String toString() {
-        DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy MM dd");
-        return lastName + " " + firstName + " " + "(" + birthDate.toString(fmt) + ")";
-
-
-    }
-
-    public int getAge() {
-        DateTime date = new DateTime();
-        long l = date.getMillis() - birthDate.getMillis();
-        return (date.withMillis(l).getYear()) - 1970;
-    }
-
-        public int compareTo(Student o) {
-            return (int) (birthDate.getMillis() - o.birthDate.getMillis());
-        }
 }
 
 
