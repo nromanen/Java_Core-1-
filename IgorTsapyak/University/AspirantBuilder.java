@@ -4,7 +4,7 @@ import org.joda.time.DateTime;
 
 
 
-public class AspirantBuilder extends StudentBuilder {
+public class AspirantBuilder {
 
     Aspirant aspirantInstance  = new Aspirant();
 
