@@ -1,12 +1,7 @@
 package university;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.security.acl.Group;
+import java.util.*;
 
 public class AcademyGroup {
 	private String title;
@@ -57,8 +52,26 @@ public class AcademyGroup {
 		return listStudents;
 	}
 
-	public boolean delete(Student student) {
-		return students.remove(student);
+	public void deletStudentByFullName(String name){
+		Iterator<Student> iter = this.getStudents().iterator();
+		while(iter.hasNext()){
+			if (iter.next().getFullName().equals(name)){
+				iter.remove();
+			}
+		}
+	}
+
+	public boolean addStudent(Student student) {
+		return students.add(student);
+	}
+
+	public List<Student> graduationYearOfStudent(int graduationYear){
+		List<Student> studentWhooGraduatedInthisYear = new ArrayList<>();
+		for (Student student: students){
+			if (student.getGraduationYear()==graduationYear){
+			studentWhooGraduatedInthisYear.add(student);
+			}
+		}return studentWhooGraduatedInthisYear;
 	}
 
 	@Override
@@ -69,18 +82,5 @@ public class AcademyGroup {
 			sb.append(st).append("\n");
 		}
 		return sb.toString();
-	}
-
-	public boolean addStudent(Student student) {
-		return students.add(student);
-	}
-
-	public List<Student> gyStudents(int gYear){
-		List<Student> studentHoGinY = new ArrayList<>();
-		for (Student student: students){
-			if (student.getGraduationYear()==gYear){
-			studentHoGinY.add(student);
-			}
-		}return studentHoGinY;
 	}
 }

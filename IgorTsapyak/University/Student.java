@@ -6,13 +6,13 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 public class Student {
-    private String firstName;
+    protected String firstName;
 
-    private String lastName;
+    protected String lastName;
 
-    private DateTime birthDate;
+    protected DateTime birthDate;
 
-    private int graduationYear;
+    protected int graduationYear;
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -58,24 +58,33 @@ public class Student {
         return Years.yearsBetween(birthDate, date).getYears();
     }
 
+//    public String getFullName(){
+//        String fullName = lastName+firstName;
+//        return fullName;
+//    }
+
+
+    public String getFullName() {
+        String fullName = (lastName+firstName);
+        return fullName;
+    }
+
     @Override
     public int hashCode() {
-        String fullName = firstName+lastName;
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((fullName == null) ? 0 : fullName.hashCode());
+                + ((getFullName() == null) ? 0 : getFullName().hashCode());
         return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        String fullName = firstName+lastName;
         if (getClass() != obj.getClass())
             return false;
         Student other = (Student)obj;
         String otherFullName = other.firstName + other.lastName;
-        return fullName.equals(otherFullName);
+        return getFullName().equals(otherFullName);
     }
 }
 
