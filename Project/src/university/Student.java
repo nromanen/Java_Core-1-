@@ -3,7 +3,8 @@ package university;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Student implements Comparable<Student> {
+public class Student // implements Comparable<Student>
+{
 	private String firstName;
 	// TODO DateTime from jodatime
 	private Calendar birthDate;
@@ -32,7 +33,7 @@ public class Student implements Comparable<Student> {
 				+ ((firstName == null) ? 0 : firstName.hashCode());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -53,8 +54,8 @@ public class Student implements Comparable<Student> {
 	public String toString() {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY MM dd");
-		return "Student [firstName=" + firstName + ", BirthDate="
-				+ dateFormat.format(birthDate.getTime()) + "]";
+		return "Student " + firstName + " ("
+				+ dateFormat.format(birthDate.getTime()) + ")";
 
 	}
 
@@ -65,9 +66,75 @@ public class Student implements Comparable<Student> {
 		return calendar.get(Calendar.YEAR) - 1970;
 	}
 
-	@Override
+	// @Override
 	public int compareTo(Student o) {
 		return (int) (birthDate.getTimeInMillis() - o.birthDate
 				.getTimeInMillis());
 	}
+}
+
+class Car {
+	protected String model;
+	protected int year;
+	public static String superField = "Super";
+
+	public static String superMeth() {
+		return "superMeth";
+	}
+
+	public Car() {
+	}
+
+	public Car(String s, int year) {
+		model = s;
+		this.year = year;
+	}
+
+	public int getAge() {
+		return year - 2000;
+	}
+
+}
+
+class Track extends Car {
+	private double height;
+
+	public static String superField = "child";
+
+	public static String superMeth() {
+		return "childMeth";
+	}
+
+	public Track(String s, int year, double w) {
+		super(s, year);
+		//this.model=s;
+		//this.year=year;
+		//super.model = s;
+		//model = "dr";
+		//this.year = year;
+		this.height = w;
+	}
+
+	public int getAge() {
+		return year - 2010;
+	}
+
+	public int getSuperAge() {
+		return super.getAge();
+	}
+
+	public String toString() {
+//Second uncommented
+				System.out.println(super.superField + "|||");
+		System.out.println(super.superMeth() + "\\\\");
+
+//First uncommented without override in track and with override
+
+		System.out.println(superField + "|||");
+		System.out.println(superMeth() + "\\\\");
+
+		return model + " " + year + " " + height;
+	}
+	
+	
 }
