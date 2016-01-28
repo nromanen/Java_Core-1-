@@ -35,14 +35,30 @@ public class testMain {
         garage.add(a3);
 
         Garage g1 = new Garage();
+        
         g1.setAutos(garage);
-        System.out.println(garage);
-
-        System.out.println("_________\n" + g1.sort(CompareCategories.YEAR));
-
-
+        printSortedAutos(g1,CompareCategories.YEAR,TheOrderOfSort.DECREASE);
+        printSortedAutos(g1,CompareCategories.YEAR,TheOrderOfSort.GROWTH);
     }
 
-
+    public static void printSortedAutos(Garage g1, CompareCategories cat, TheOrderOfSort ord){
+        switch (cat){
+            case PRICE:
+                System.out.println("********************AutosSortedBy"+cat+"in"
+                        + ord + "order*********************\n" + g1.sort(cat,ord));
+                break;
+            case CAR_BRAND:
+                System.out.println("********************AutosSortedBy"+cat+"in"
+                        + ord + "order********************\n" + g1.sort(cat,ord));
+                break;
+            case YEAR:
+                System.out.println("********************AutosSortedBy"+cat+"in"
+                        + ord + "order********************\n" + g1.sort(cat,ord));
+                break;
+            case MODEL:
+                System.out.println("********************AutosSortedBy"+cat+"in"
+                        + ord + "order********************\n" + g1.sort(cat,ord));
+        }
+    }
 
 }

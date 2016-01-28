@@ -13,10 +13,10 @@ public class Garage {
         this.autos = autos;
     }
 
-    public List<Auto> sort(CompareCategories cat){
+    public List<Auto> sort(CompareCategories cat, TheOrderOfSort ord){
         ArrayList<Auto> autos1 = new ArrayList<>(autos);
         switch (cat) {
-            case CB:
+            case CAR_BRAND:
                 Collections.sort(autos1, new Comparator<Auto>() {
                     @Override
                     public int compare(Auto o1, Auto o2) {
@@ -49,7 +49,9 @@ public class Garage {
                 });
 
         }
-
+        if (ord==TheOrderOfSort.DECREASE){
+            Collections.reverse(autos1);
+        }
         return autos1;
     }
 }

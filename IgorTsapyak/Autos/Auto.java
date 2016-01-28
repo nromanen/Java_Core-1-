@@ -55,10 +55,10 @@ public class Auto {
     @Override
     public String toString() {
         return"Car brand - " + carBrand+
-                " "+"Model - "+ model+
-                " "+"Colour - " + colour+
-                " "+"Year - " + year+
-                " "+"Price - " + price + "\n";
+                ", Model - "+ model+
+                ", Colour - " + colour+
+                ", Year - " + year+
+                ", Price - " + price + "\n";
     }
 
 }
