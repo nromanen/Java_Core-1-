@@ -29,19 +29,30 @@ public class testMain {
                 .setPrice(15000)
                 .build();
 
+        Auto a4 = new AutoBuilder()
+                .setCarBrand("Mercedes")
+                .setModel("Vito")
+                .setColour("Orange")
+                .setYear(2001)
+                .setPrice(10000)
+                .build();
+
         Set<Auto> garage = new HashSet<>();
         garage.add(a1);
         garage.add(a2);
         garage.add(a3);
 
         Garage g1 = new Garage();
-        
         g1.setAutos(garage);
-        printSortedAutos(g1,CompareCategories.YEAR,TheOrderOfSort.DECREASE);
-        printSortedAutos(g1,CompareCategories.YEAR,TheOrderOfSort.GROWTH);
+        g1.addCar(a4);
+
+        g1.removeAnOldAutoByAge(10);
+
+        printSortedAutos(g1,CompareCategories.YEAR,SortOrder.DESC);
+        printSortedAutos(g1,CompareCategories.YEAR,SortOrder.ASC);
     }
 
-    public static void printSortedAutos(Garage g1, CompareCategories cat, TheOrderOfSort ord){
+    public static void printSortedAutos(Garage g1, CompareCategories cat, SortOrder ord){
         switch (cat){
             case PRICE:
                 System.out.println("********************AutosSortedBy"+cat+"in"
@@ -55,7 +66,7 @@ public class testMain {
                 System.out.println("********************AutosSortedBy"+cat+"in"
                         + ord + "order********************\n" + g1.sort(cat,ord));
                 break;
-            case MODEL:
+            case CAR_MODEL:
                 System.out.println("********************AutosSortedBy"+cat+"in"
                         + ord + "order********************\n" + g1.sort(cat,ord));
         }

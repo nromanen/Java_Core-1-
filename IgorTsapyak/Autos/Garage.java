@@ -1,4 +1,7 @@
+import org.joda.time.DateTime;
+
 import java.util.*;
+
 
 public class Garage {
 
@@ -13,7 +16,11 @@ public class Garage {
         this.autos = autos;
     }
 
-    public List<Auto> sort(CompareCategories cat, TheOrderOfSort ord){
+    public boolean addCar(Auto auto){
+        return autos.add(auto);
+    }
+
+    public List<Auto> sort(CompareCategories cat, SortOrder ord){
         ArrayList<Auto> autos1 = new ArrayList<>(autos);
         switch (cat) {
             case CAR_BRAND:
@@ -24,7 +31,7 @@ public class Garage {
                     }
                 });
                 break;
-            case MODEL:
+            case CAR_MODEL:
                 Collections.sort(autos1, new Comparator<Auto>() {
                     @Override
                     public int compare(Auto o1, Auto o2) {
@@ -49,9 +56,18 @@ public class Garage {
                 });
 
         }
-        if (ord==TheOrderOfSort.DECREASE){
+        if (ord==SortOrder.DESC){
             Collections.reverse(autos1);
         }
         return autos1;
+    }
+
+    public void removeAnOldAutoByAge(int ageOfAuto){
+        Iterator<Auto> iter = autos.iterator();
+        while (iter.hasNext()){
+            if (DateTime.now().getYear() - iter.next().getYear()>ageOfAuto){
+                iter.remove();
+            }
+        }
     }
 }

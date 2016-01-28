@@ -1,6 +1,6 @@
 
 public enum CompareCategories {
 
-    CAR_BRAND, MODEL, YEAR, PRICE;
+    CAR_BRAND, CAR_MODEL, YEAR, PRICE;
 
 }
