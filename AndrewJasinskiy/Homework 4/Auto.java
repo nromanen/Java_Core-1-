@@ -10,12 +10,11 @@ public class Auto {
 
     private int loadCapacity;
 
-    private int kpl; //kilometers per liter
+    private int fuelConsumption;
 
     private String brand;
 
     private String brandModel;
-
 
     private Auto() {
         // private constructor
@@ -41,8 +40,8 @@ public class Auto {
         return loadCapacity;
     }
 
-    public int getKpl() {
-        return kpl;
+    public int getFuelConsumption() {
+        return fuelConsumption;
     }
 
     public String getBrand() {
@@ -53,20 +52,20 @@ public class Auto {
         return new Auto().new Builder();
     }
 
-    private String getCorrectBrand(String brand) {
-        this.brand = brand;
-        for (int i = 0; i < brand.length(); i++) {
-            String first = brand.substring(0, 1).toUpperCase();
-            String other = brand.substring(1).toLowerCase();
-            brand = first + other;
+    private String getCorrectBrand(String value) {
+        //this.brand = brand;
+        for (int i = 0; i < value.length(); i++) {
+            String first = value.substring(0, 1).toUpperCase();
+            String other = value.substring(1).toLowerCase();
+            value = first + other;
         }
-        return brand;
+        return value;
     }
 
     @Override
     public String toString() {
-        return  "Automobile-" + "\""+ brand +"\"" + "." + " Serial model-" + "\""+brandModel+"\"" + "."  +  " Year-"+ "\""+ year+"\"" + "." + " Maximum speed-" + "\""+maxSpeed+"\"" + "km/h." +
-                " Maximum capacity-" + "\""+loadCapacity+"\"" + "kg. " + " Passengers-" +"\""+ passengers+"\"" + " people." + " Fuel consumption per 100km-" + "\""+kpl+"\"" + " liters";
+        return  "Automobile-" + "\""+ getCorrectBrand(brand) +"\"" + "." + " Serial model-" + "\""+getCorrectBrand(brandModel)+"\"" + "."  +  " Year-"+ "\""+ year+"\"" + "." + " Maximum speed-" + "\""+maxSpeed+"\"" + "km/h." +
+                " Maximum capacity-" + "\""+loadCapacity+"\"" + "kg. " + " Passengers-" +"\""+ passengers+"\"" + " people." + " Fuel consumption per 100km-" + "\""+fuelConsumption+"\"" + " liters" + "\n";
     }
 
     //Builder
@@ -97,8 +96,8 @@ public class Auto {
             return this;
         }
 
-        public Builder setKpl(int kpl) {
-            Auto.this.kpl = kpl;
+        public Builder setFuelConsumption(int fuelConsumption) {
+            Auto.this.fuelConsumption = fuelConsumption;
             return this;
         }
 
