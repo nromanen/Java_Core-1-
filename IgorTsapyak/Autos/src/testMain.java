@@ -8,8 +8,9 @@ public class testMain {
     public static void main(String[] args) throws IOException {
 
         Garage g1 = new Garage();
-        g1.setAutos(AutoCreator.readCarsFromFile());
+        g1.setAutos(AutoCreator.readCarsFromFile("inputAutos.txt"));
         printSortedAutos(g1, SortValues.PRICE, SortOrder.ASC);
+
        }
 
     public static void printSortedAutos(Garage g1, SortValues cat, SortOrder ord){

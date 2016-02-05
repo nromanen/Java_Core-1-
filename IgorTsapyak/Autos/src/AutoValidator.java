@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 public class AutoValidator {
 
     private static String cbrand;
-    private static int carId = 0;
     static int carBrand = 1;
     static int carModel = 2;
     static int carColour = 3;
@@ -16,22 +15,17 @@ public class AutoValidator {
     private static final int firstAutoPatentYear=1886;
     private static final String YEAR_PATTERN = "\\$\\d{3,}";
 
-    public static boolean validInputAuto(String[] s) {
+    public static boolean validInputAuto(String[] s, int carId)throws InavalidInputedValueException{
         if (!carBrandChacker(s[carBrand].toUpperCase())){
-            System.out.println("Invalid Brand in " + s[carId] + " Car");
-            return false;
+            throw new InavalidInputedValueException("Invalid Brand in line# " + carId);
         }else if (!carModelChacker(s[carModel].toUpperCase())){
-            System.out.println("Invalid Model in " + s[carId] + " Car");
-            return false;
+            throw new InavalidInputedValueException("Invalid Model in line# " + carId);
         }else if (!carColourChacker(s[carColour].toUpperCase())){
-            System.out.println("Invalid Colour in " + s[carId] + " Car");
-            return false;
+            throw new InavalidInputedValueException("Invalid Colour in line# " + carId);
         }else if (!carYearChacker(s[carYear])){
-            System.out.println("Invalid Year in " + s[carId] + " Car");
-            return false;
+            throw new InavalidInputedValueException("Invalid Year in line# " + carId);
         }else if (!carPriceChacker(s[carPrice])){
-            System.out.println("Invalid Price in " + s[carId] + " Car");
-            return false;
+            throw new InavalidInputedValueException("Invalid Price in line# " + carId);
         }
         return true;
     }

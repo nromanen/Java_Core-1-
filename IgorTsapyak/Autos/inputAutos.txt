@@ -1,4 +1,4 @@
-1, Opel, Vectra, Green, 2010, $15500
+1, Opel, Vectra, Green, 2010, $155500
 2, Mercedes, E300, Blue, 2009, $9000
 3, BMW, SERIES3, Red, 2016, $35000
 4, Audi, A4, White, 2008, $6000
@@ -8,3 +8,4 @@
 8, BMW, SERIES7, Black, 2016, $56000
 9, Audi, A7, Silver, 2015, $38000
 10, Opel, Vivaro, Red, 2008, $10000
+11, Mercedes, E350, Silver, 2006, $9000
