@@ -1,4 +1,4 @@
-package HW_4;
+package HW_5;
 
 import java.util.*;
 
@@ -73,6 +73,17 @@ public class Exhibition {
         }
     }
 
+    public void deleteCar(AutoSelection comp, double value) {
+        Iterator<Auto> i = cars.iterator();
+        while(i.hasNext()) {
+            switch (comp) {
+                case PRICE:
+                    if(i.next().getPrice()==value) i.remove();
+                    break;
+            }
+        }
+    }
+
     public List<Auto> sort(final AutoSelection comp){
         List<Auto> auto = new ArrayList<>(cars);
         Collections.sort(auto, new Comparator<Auto>() {
@@ -93,6 +104,8 @@ public class Exhibition {
                        return o1.getMaxSpeed()-o2.getMaxSpeed();
                    case PASSENGERS:
                        return o1.getPassengers()-o2.getPassengers();
+                   case PRICE:
+                       return (int)(o1.getPrice()-o2.getPrice());
                }
                 return 0;
             }
@@ -120,6 +133,8 @@ public class Exhibition {
                         return o1.getMaxSpeed()-o2.getMaxSpeed();
                     case PASSENGERS:
                         return o1.getPassengers()-o2.getPassengers();
+                    case PRICE:
+                        return (int)(o1.getPrice()-o2.getPrice());
                 }
                 return 0;
             }
