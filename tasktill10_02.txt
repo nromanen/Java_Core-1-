@@ -1,0 +1,10 @@
+
+1. Написати 2 класи, які реалізують інтерфейс IOAuto:
+	SelfFormatAuto, JsonFormatAutoа
+2. Продумати реалізацію створення об'єктів типу інтерфейсу IOAuto
+
+Аналогічно 	public void writeAuto(String file, Auto auto) throws JsonGenerationException, JsonMappingException, IOException {
+в AutoJson.class
+
+
+
