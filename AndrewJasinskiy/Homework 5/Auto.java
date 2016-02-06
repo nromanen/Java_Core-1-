@@ -93,8 +93,8 @@ public class Auto {
         return new Auto().new Builder();
     }
 
-    private String getCorrectBrand(String value) {
-        //this.brand = brand;
+    public static String getCorrectBrand(String value) {
+
         for (int i = 0; i < value.length(); i++) {
             String first = value.substring(0, 1).toUpperCase();
             String other = value.substring(1).toLowerCase();
@@ -103,11 +103,16 @@ public class Auto {
         return value;
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         return  "Automobile-" + "\""+ getCorrectBrand(brand) +"\"" + "." + " Serial model-" + "\""+getCorrectBrand(brandModel)+"\"" + "."  +  " Year-"+ "\""+ year+"\"" + "." + " Maximum speed-" + "\""+maxSpeed+"\"" + "km/h." +
                 " Maximum capacity-" + "\""+loadCapacity+"\"" + "kg. " + " Passengers-" +"\""+ passengers+"\"" + " people." + " Fuel consumption per 100km-" + "\""+fuelConsumption+"\"" + " liters." +
                 " Auto costs-" + price + "\n";
+    }*/
+
+    @Override
+    public String toString() {
+        return "Automobile - " + brand + ",year - " + year + ","+" price - $" + price ;
     }
 
     //Builder
@@ -170,35 +175,38 @@ public class Auto {
     public static Auto valueOf(String autoRep) throws AutoFormatException{
         Auto auto = new Auto();
         String[] err = AutoValidator.errors(autoRep);
-        String[] strings = StringUtils.split(autoRep, ", .;[]()");
+        String[] strings = StringUtils.split(autoRep, ", ;[]()");
 
         if (!(AutoValidator.errors(autoRep)[0]).isEmpty()) {
             throw new AutoFormatException(err);
-        } else
+        } else {
             auto.setBrand(strings[0]);
+        }
 
-		if (!(AutoValidator.errors(autoRep)[1]).isEmpty()) {
-			return null;
-		} else {
-			auto.setYear(Integer.parseInt(strings[1]));
-		}
+        if (!(AutoValidator.errors(autoRep)[1]).isEmpty()) {
+            throw new AutoFormatException(err);
+        } else {
+            auto.setYear(Integer.parseInt(strings[1]));
+        }
         if (!(AutoValidator.errors(autoRep)[2]).isEmpty()) {
-            return null;
+            throw new AutoFormatException(err);
         } else {
             auto.setPrice(Double.parseDouble(strings[2]));
         }
-        return auto;
-    }
+       return auto;
+}
 
-
-    public static void main(String[] args) {
-
-        Auto a = new Auto();
-
-        String merc = "Mercedes 1945 $34.234";
-
+    public static void main(String[] args) throws AutoFormatException{
+        String merc = "Mercedes, 1945, 34.23";
+        String bmw = "Bmw, 2010, 34.23";
+        Auto a;
+        Auto b;
         try{
-            a=Auto.valueOf(merc);
+            a=valueOf(merc);
+            b=valueOf(bmw);
+            System.out.println(a);
+            System.out.println(b);
+
         }catch (AutoFormatException e) {
             System.out.println(e);
         }
