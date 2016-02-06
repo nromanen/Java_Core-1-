@@ -39,7 +39,7 @@ public class Exhibition {
         return cars.add(automobile);
     }
 
-    public void deleteCar(CompareAuto comp, String brand) {
+    public void deleteCar(AutoSelection comp, String brand) {
         Iterator<Auto> i = cars.iterator();
             while(i.hasNext()) {
                 switch (comp) {
@@ -53,7 +53,7 @@ public class Exhibition {
             }
     }
 
-    public void deleteCar(CompareAuto comp, int value) {
+    public void deleteCar(AutoSelection comp, int value) {
         Iterator<Auto> i = cars.iterator();
         while(i.hasNext()) {
             switch (comp) {
@@ -73,7 +73,7 @@ public class Exhibition {
         }
     }
 
-    public List<Auto> sort(final CompareAuto comp){
+    public List<Auto> sort(final AutoSelection comp){
         List<Auto> auto = new ArrayList<>(cars);
         Collections.sort(auto, new Comparator<Auto>() {
            @Override
@@ -100,7 +100,7 @@ public class Exhibition {
         return auto;
     }
 
-    public List<Auto> sort(final CompareAuto comp, String value ){
+    public List<Auto> sort(final AutoSelection comp, String value ){
         List<Auto> auto = new ArrayList<>(cars);
         Collections.sort(auto, new Comparator<Auto>() {
             @Override

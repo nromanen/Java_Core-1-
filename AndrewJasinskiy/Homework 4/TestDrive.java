@@ -2,7 +2,7 @@ package HW_4;
 
 import java.util.HashSet;
 import java.util.Set;
-import static HW_4.Exhibition.DEC;
+
 import static HW_4.Exhibition.INC;
 
 public class TestDrive {
@@ -59,14 +59,14 @@ public class TestDrive {
         exhibition.setCar(ex);
 
 
-        System.out.println("Sort car by year : " +"\n" +  exhibition.sort(CompareAuto.YEAR));
-        System.out.println("Sort car by year INC : " +"\n" +  exhibition.sort(CompareAuto.YEAR,INC));
+        System.out.println("Sort car by year : " +"\n" +  exhibition.sort(AutoSelection.YEAR));
+        System.out.println("Sort car by year INC : " +"\n" +  exhibition.sort(AutoSelection.YEAR,INC));
         System.out.println("Get car by Year : " +"\n" +  exhibition.getByYear(1973));
         System.out.println("Get car by Brand : " +"\n" +  exhibition.getByBrand("shelby"));
-        System.out.println("Sort car by year INC : " +"\n" +  exhibition.sort(CompareAuto.YEAR,INC));
+        System.out.println("Sort car by year INC : " +"\n" +  exhibition.sort(AutoSelection.YEAR,INC));
         //System.out.println("Sort car by brand : " +"\n" +  exhibition.sort(CompareAuto.BRAND));
         //System.out.println("Sort car by max speed: " +"\n" +  exhibition.sort(CompareAuto.MAX_SPEED));
-        exhibition.deleteCar(CompareAuto.YEAR, 1965);
+        exhibition.deleteCar(AutoSelection.YEAR, 1965);
         System.out.println("Exhibition after removing car: " +"\n" + ex);
 
     }
