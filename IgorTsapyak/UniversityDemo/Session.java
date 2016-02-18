@@ -12,23 +12,20 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public class Session {
-	
+
 	public static enum ControlType {
-		TEST, EXAM // ordinal, compareTo, toString
-	};
+		TEST, EXAM
+	}
 
 	private String title;
-	
-	private Map<String, String> subjects; // title and type of exams;
 
-	
-	public Map<String, ControlType> subjs; // TODO refactoring (reason)
+	public Map<String, ControlType> subjects;
 
-	public Map<String, String> getSubjects() {
+	public Map<String, ControlType> getSubjects() {
 		return subjects;
 	}
 
-	public void setSubjects(Map<String, String> subjects) {
+	public void setSubjects(Map<String, ControlType> subjects) {
 		this.subjects = subjects;
 	}
 
@@ -40,68 +37,53 @@ public class Session {
 		this.title = title;
 	}
 
-	public Map<String, ControlType> getSubjs() {
-		return subjs;
+	public ControlType getType(String subject){
+		return subjects.get(subject);
 	}
 
-	public void setSubjs(Map<String, ControlType> subjs) {
-		this.subjs = subjs;
-	}
-	
-	public ControlType getType(String subject){
-		return subjs.get(subject);
-	}
-	
 	public Set<String> getAllSubjectsByType(ControlType type){
-		Set<String> set= new HashSet<>();
-		for(String value : subjs.keySet()){
-			if (subjs.get(value).equals(type)){
+		Set<String> set = new HashSet<>();
+		for(String value : subjects.keySet()){
+			if (subjects.get(value).equals(type)){
 				set.add(value);
 			}
 		}
 		return set;
 	}
-	
-	//TODO
-	/**
-	 * method return 'normal' String representation of 
-	 * end-user  Subject title
-	 * or null otherwise
-	 * @param String representation of Subject title
-	 * @return 'canonical' title of Subject
-	 */
+//
+//	//TODO
+//	/**
+//	 * method return 'normal' String representation of
+//	 * end-user  Subject title
+//	 * or null otherwise
+//	 * @param String representation of Subject title
+//	 * @return 'canonical' title of Subject
+//	 */
 	public String getSubject(String subject){
-		for (String testValue:subjs.keySet()){
+		for (String testValue:subjects.keySet()){
 			if (testValue.equalsIgnoreCase(subject)){
 				return testValue;
 			}
 		}
 		return null;
 	}
-	
 	public Set<String> getAllSubjects(){
-		return subjs.keySet();
+		return subjects.keySet();
 	}
 
 	@Override
 	public String toString() {
-/*		ArrayList<ControlType> subjects = new ArrayList<>();
-		for (ControlType type : subjs.values()) {
-			subjects.add(type);
-		}
-		// subjects = (ArrayList<ControlType>) subjs.values();
-		Collections.sort(subjects);
-		System.out.println(subjects);*/
-		return sortedSubjects().toString();
+		return title +"\n"+subjects.toString();
+
 	}
 
 	private Map<String, ControlType> sortedSubjects() {
 		List<Map.Entry<String, ControlType>> list = new LinkedList<Map.Entry<String, ControlType>>(
-				subjs.entrySet());
+				subjects.entrySet());
 		Collections.sort(list,
 				new Comparator<Map.Entry<String, ControlType>>() {
 					public int compare(Map.Entry<String, ControlType> o1,
-							Map.Entry<String, ControlType> o2) {
+									   Map.Entry<String, ControlType> o2) {
 						return o1.getValue().compareTo(o2.getValue());
 					}
 				});
